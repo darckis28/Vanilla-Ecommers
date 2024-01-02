@@ -2,7 +2,6 @@ export let productoId = 0;
 import { active } from "../index.js";
 import { convert } from "../index.js";
 import contentFlotante from "./content-flotante.js";
-import { details } from "../index.js";
 export default (data) => {
   const { id, title, price, images } = data;
   const div = document.createElement("div");
