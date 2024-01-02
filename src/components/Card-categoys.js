@@ -13,7 +13,7 @@ export default (data) => {
     "cursor-pointer"
   );
   const content = `<img class="w-52 h-52 object-cover" src="${
-    images[2]
+    images[1]
   }" alt="${title}"/>
                     <h3 class="mx-2 text-center uppercase font-semibold text-ellipsis whitespace-nowrap overflow-hidden text-gray-600"> ${title} </h3>
                     <span class="block text-center font-semibold m-auto mb-4 text-gray-400">
