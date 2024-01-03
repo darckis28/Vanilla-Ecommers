@@ -1,18 +1,32 @@
 import Categorias from "./components/Categorias.js";
 import { getCategory } from "./assets/data/data.js";
 const $container = document.getElementById("container-content");
-const $btn = document.getElementById("close");
 const $flot = document.getElementById("flot-content");
-getCategory().then(async (data) => {
-  data.slice(0, 5).forEach((category) => {
-    $container.appendChild(Categorias(category));
+if (!localStorage.getItem("id")) {
+  localStorage.setItem("id", "0");
+}
+if (!localStorage.getItem("category")) {
+  localStorage.setItem("category", "0");
+}
+try {
+  getCategory().then(async (data) => {
+    data.slice(0, 5).forEach((category) => {
+      try {
+        $container.appendChild(Categorias(category));
+      } catch (e) {
+        console.log(e);
+      }
+    });
   });
-});
-$flot.addEventListener("click", (e) => {
-  if (e.target && e.target.nodeName === "I") {
-    active(false);
-  }
-});
+  $flot.addEventListener("click", (e) => {
+    if (e.target && e.target.nodeName === "I") {
+      $flot.innerHTML = "";
+      active(false);
+    }
+  });
+} catch (e) {
+  console.log(e);
+}
 export function active(interuptor) {
   interuptor
     ? document
@@ -29,6 +43,5 @@ export function convert(num) {
   });
 }
 export function details(content) {
-  $flot.innerHTML = "";
   $flot.innerHTML = content;
 }
